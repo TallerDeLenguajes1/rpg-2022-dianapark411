@@ -1,16 +1,31 @@
 
 public enum Tipo{ 
-    Hada,
-    Duende,
+    Brujo, 
+    Hechicera, 
+    Princesa, 
+    Elfo,
     Dragon,
-    Caballero, 
-    Brujo,
+}
+
+public enum Nombre{
+    GeraltDeRivia,
+    YenneferDeVenderberg,
+    CirillaDeCintra,
+    FilavandrelAénFidháil,
+    Villentretenmerth, 
+}
+public enum Apodo{
+    Geralt,
+    Yennefer,
+    Ciri,
+    Filavandrel,
+    Borch, 
 }
 public class personaje{
     public class datos{
         public Tipo tipo;
-        public string Nombre {get;set;}
-        public string Apodo {get;set;}
+        public Nombre Nombre;
+        public Apodo Apodo;
         public DateTime FechaNacimiento {get;set;}
         public int Edad {get;set;}
         public int Salud {get;set;}

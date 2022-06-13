@@ -10,32 +10,35 @@ mostrarCaracteristicas(caracteristicas);
 personaje.datos cargarDatos(){
 
     personaje.datos datos = new personaje.datos();
-
-    Console.WriteLine("\nINGRESE SU NOMBRE: ");
-    datos.Nombre = Console.ReadLine();
-
-    Console.WriteLine("\nINGRESE SU APODO: ");
-    datos.Apodo = Console.ReadLine();
-
     
     Random random = new Random();
     int tipo = random.Next(1,5);
 
     switch (tipo){
         case 1:
-            datos.tipo = Tipo.Hada;
+            datos.tipo = Tipo.Brujo;
+            datos.Nombre = Nombre.GeraltDeRivia;
+            datos.Apodo = Apodo.Geralt;
             break;
         case 2:
-            datos.tipo = Tipo.Duende;
+            datos.tipo = Tipo.Hechicera;
+            datos.Nombre = Nombre.YenneferDeVenderberg;
+            datos.Apodo = Apodo.Yennefer;
             break;
         case 3:
-            datos.tipo = Tipo.Dragon;
+            datos.tipo = Tipo.Princesa;
+            datos.Nombre = Nombre.CirillaDeCintra;
+            datos.Apodo = Apodo.Ciri;
             break;
         case 4:
-            datos.tipo = Tipo.Caballero;
+            datos.tipo = Tipo.Elfo;
+            datos.Nombre = Nombre.FilavandrelAénFidháil;
+            datos.Apodo = Apodo.Filavandrel;
             break;
         case 5:
-            datos.tipo = Tipo.Brujo;
+            datos.tipo = Tipo.Dragon;
+            datos.Nombre = Nombre.Villentretenmerth;
+            datos.Apodo = Apodo.Borch;
             break;
         default:
             break;
