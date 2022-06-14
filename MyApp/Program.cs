@@ -17,17 +17,17 @@ for (int i = 0; i < cantPersonajes; i++){
     mostrarUnPersonaje(PersonajesEnJuego[i], i);
 }
 
-Console.WriteLine("\nElija dos personajes para que peleen separados por un guion (ejemplo 2-4): ");
-string eleccion = Console.ReadLine();
-//CASTEARLO DESPUES
-string[] eleccionArray = eleccion.Split('-');
-Console.WriteLine(String.Join(", ", eleccionArray));
+Console.WriteLine("\n---PRIMER ENFRENTAMIENTO---");
+Console.WriteLine("\nElija un atacante, ej 1: ");
+int atacante = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("\nElija un defensor, ej 3: ");
+int defensor = Convert.ToInt32(Console.ReadLine());
 
-//char[] delimiterChars = { ' ', ',', '.', ':', '-', '/'};
-//List<int> eleccionLista = eleccion?.Split(',').Select(Int32.Parse).ToList();
+combate combat  = new combate(PersonajesEnJuego[atacante], PersonajesEnJuego[defensor]);
+
 
 void mostrarUnPersonaje(personaje _personaje, int i){
-    Console.WriteLine($"\n----INFORMACION DEL PERSONAJE [{i+1}]----");
+    Console.WriteLine($"\n----INFORMACION DEL PERSONAJE [{i}]----");
     //Console.WriteLine("\n--------DATOS DEL PERSONAJE--------");
     Console.WriteLine($"Tipo: {_personaje.dat.Tipo}");
     Console.WriteLine($"Nombre: {_personaje.dat.Nombre}");
