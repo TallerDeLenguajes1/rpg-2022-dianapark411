@@ -6,6 +6,23 @@ public class personaje{
         dat = _dat; 
         carac = _carac;
     }
+
+    public void mostrarUnPersonaje(personaje _personaje){
+        //Console.WriteLine("\n--------DATOS DEL PERSONAJE--------");
+        Console.WriteLine($"Tipo: {_personaje.dat.Tipo}");
+        Console.WriteLine($"Nombre: {_personaje.dat.Nombre}");
+        Console.WriteLine($"Apodo: {_personaje.dat.Apodo}");
+        Console.WriteLine($"Fecha de nacimiento: {_personaje.dat.FechaNacimiento.ToShortDateString()}");
+        Console.WriteLine($"Edad: {_personaje.dat.Edad}");
+        Console.WriteLine($"Salud: {_personaje.dat.Salud}");
+
+        //Console.WriteLine("\n----CARACTERISTICAS DEL PERSONAJE----");
+        Console.WriteLine($"Velocidad: {_personaje.carac.Velocidad}");
+        Console.WriteLine($"Destreza: {_personaje.carac.Destreza}");
+        Console.WriteLine($"Fuerza: {_personaje.carac.Fuerza}");
+        Console.WriteLine($"Nivel: {_personaje.carac.Nivel}");
+        Console.WriteLine($"Armadura: {_personaje.carac.Armadura}");
+    }
 }
 
 public enum Tipo{ 
@@ -15,6 +32,8 @@ public enum Tipo{
     Elfo,
     Dragon,
     Demonio,
+    Rey,
+
 }
 public enum Nombre{
     GeraltDeRivia,
@@ -23,6 +42,8 @@ public enum Nombre{
     FilavandrelAénFidháil,
     Villentretenmerth, 
     VolethMeir,
+    Foltest,
+    Vesemir,
 }
 public enum Apodo{
     Geralt,
@@ -31,6 +52,8 @@ public enum Apodo{
     Filavandrel,
     Borch, 
     BabaYaga, 
+    Foltest,
+    Vesemir,
 }
 
 public class datos{
@@ -91,6 +114,16 @@ public class datos{
                 Tipo = Tipo.Demonio;
                 Nombre = Nombre.VolethMeir;
                 Apodo = Apodo.BabaYaga;
+                break;
+            case 7:
+                Tipo = Tipo.Rey;
+                Nombre = Nombre.Foltest;
+                Apodo = Apodo.Foltest;
+                break;
+            case 8:
+                Tipo = Tipo.Brujo;
+                Nombre = Nombre.Vesemir;
+                Apodo = Apodo.Vesemir;
                 break;
             default:
                 break;
