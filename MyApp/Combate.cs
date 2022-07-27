@@ -75,7 +75,7 @@ public class Combate{
                 return indiceP1; 
             }
         }else{  //alguno o ambos tienen salud 0, pierde
-            if(p1.dat.Salud == 0  &&  p2.dat.Salud == 0){   //hay un empate, si hace una batalla nuevamente
+            if(p1.dat.Salud == 0  &&  p2.dat.Salud == 0){   //hay un empate, se hace una batalla nuevamente
                 return combate(p1,p2, indiceP1, indiceP2);
             }else{
                 if(p1.dat.Salud == 0){  //gana el segundo
@@ -90,9 +90,9 @@ public class Combate{
     }
 
     public void mejora(personaje ganador){
-        //se mejora en un 10% algunas caracteristicas del ganador
-        ganador.carac.Armadura = ganador.carac.Armadura + (ganador.carac.Armadura / 10); 
-        ganador.carac.Fuerza = ganador.carac.Fuerza + (ganador.carac.Fuerza / 10);
-        ganador.carac.Velocidad = ganador.carac.Velocidad + (ganador.carac.Velocidad / 10);
+        //se mejoran algunas caracteristicas del ganador
+        ganador.carac.Armadura = ganador.carac.Armadura + 1; 
+        ganador.carac.Fuerza = ganador.carac.Fuerza + 1;
+        ganador.carac.Velocidad = ganador.carac.Velocidad + 1;
     }
 }

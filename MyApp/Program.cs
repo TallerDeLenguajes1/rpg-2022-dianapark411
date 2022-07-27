@@ -27,7 +27,12 @@ List<string> parejas = new List<string>();
 int cantPersj = cantPersonajes;
 
 int p1, p2, ganador, perdedor;
+int ronda = 1;
 Combate pelea;
+
+//creo el archivo csv para agregarle desp los ganadores
+string ruta = @"C:\DIANA\Facultad\3er ANIO\1er Cuatrimestre\Taller de Lenguajes I\RPG\rpg-2022-dianapark411";
+crearCSV(ruta);
 
 //Hasta 2 personajes para hacer la final por separado
 while (cantPersj>2){   
@@ -43,7 +48,6 @@ while (cantPersj>2){
         p2 = Convert.ToInt32(personajesQueSeEnfrentan[1]);
 
         (ganador,perdedor) = enfrentamiento(p1,p2);
-        
 
         Console.WriteLine("\n---GANADOR DE LA BATALLA---");
         PersonajesEnJuego[ganador].mostrarUnPersonaje(PersonajesEnJuego[ganador]);
@@ -59,29 +63,44 @@ while (cantPersj>2){
     for (int j = 0; j < cantPersj/2; j++)
     {
         PersonajesEnJuego.Add(personajesGanadores[j]);
-    }
+    }  
+
+    escribirGanadoresCSV(ruta, personajesGanadores, ronda);
 
     personajesGanadores.Clear();
     cantPersj = cantPersj/2;
+    ronda = ronda+1;
     Console.WriteLine("\n¡¡¡¡¡SIGUIENTE RONDA!!!!!");
 
 }
 
 Console.WriteLine("\n¡¡¡¡¡LA GRAN FINAL!!!!!");
 parejas = emparejamiento(cantPersj);
+
+//indice 0 porque solo quedan 2 personajes asi que sera un elemento de la lista
 personajesQueSeEnfrentan = parejas[0].Split("-");
 p1 = Convert.ToInt32(personajesQueSeEnfrentan[0]);
 p2 = Convert.ToInt32(personajesQueSeEnfrentan[1]);
 
 (ganador,perdedor) = enfrentamiento(p1,p2);
 
+escribirGanadoresCSV(ruta,personajesGanadores, ronda);
+personajesGanadores.Clear();
+
 Console.WriteLine("\n---¡¡¡¡¡GANADOR DEL TRONO!!!!!---");
 PersonajesEnJuego[ganador].mostrarUnPersonaje(PersonajesEnJuego[ganador]);
 
+Console.WriteLine("\n---Desea recordar los ganadores en cada ronda?---");
+Console.WriteLine("\n---Ingrese 1 para si 0 para no---");
+int opcion = Convert.ToInt32(Console.ReadLine());
+if(opcion == 1){
+    leerGanadoresCSV(ruta);
+}
 
 
 
-//Funcion auxiliar
+//OTRAS FUNCIONES
+
 List<string> emparejamiento(int cantPersj){
     List<string> parejas = new List<string>();
     List<int> yaElegidos = new List<int>();
@@ -112,6 +131,7 @@ List<string> emparejamiento(int cantPersj){
     return parejas;
 }
 
+
 (int, int) enfrentamiento(int p1, int p2){
 
     pelea  = new Combate();
@@ -128,4 +148,56 @@ List<string> emparejamiento(int cantPersj){
     personajesGanadores.Add(PersonajesEnJuego[ganador]);
 
     return (ganador, perdedor);
+}
+
+
+void crearCSV(string ruta){
+    
+    if(Directory.Exists(ruta)){
+        FileStream fileStream;
+
+        if(!File.Exists(ruta + @"\ganadores.csv")){
+            Console.WriteLine("Creando archivo ganadores.csv");
+            fileStream = File.Create(ruta + @"\ganadores.csv");
+            fileStream.Close();
+        }
+
+        var archivo = new FileStream(ruta + @"\ganadores.csv", FileMode.Truncate);
+        string cadena = "RONDA;APODO DEL GANADOR;SALUD\n";
+
+        StreamWriter escribir = new StreamWriter(archivo);
+        escribir.Write(cadena);
+        escribir.Close();
+        archivo.Close();
+        
+    }
+    else{
+        Console.WriteLine("La ruta ingresada no existe");
+    }
+}
+
+void escribirGanadoresCSV(string ruta, List<personaje> personajesGanadores, int ronda){
+    if(File.Exists(ruta + @"\ganadores.csv")){
+        StreamWriter file = new StreamWriter(ruta + @"\ganadores.csv", true);
+        foreach (var ganador in personajesGanadores)
+        {
+            file.WriteLine($"{ronda};{ganador.dat.Apodo};{ganador.dat.Salud}");
+        }
+
+        file.Close();   
+    }
+}
+
+void leerGanadoresCSV(string ruta){
+    if(File.Exists(ruta + @"\ganadores.csv")){
+        StreamReader file = new StreamReader(ruta + @"\ganadores.csv");
+        string line = "";
+        Console.WriteLine("GANADORES EN CADA ENFRENTAMIENTO");
+        //Lee linea por linea hasta que termina el archivo
+        while ((line = file.ReadLine()) != null)
+        {
+            Console.WriteLine(line);
+        }
+        file.Close();   
+    }
 }
