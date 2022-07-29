@@ -1,6 +1,8 @@
+using System.Text.Json.Serialization;
+
 public class personaje{
-    public datos dat;
-    public caracteristicas carac;
+    public datos dat {get;set;}
+    public caracteristicas carac {get;set;}
 
     public personaje(datos _dat, caracteristicas _carac){
         dat = _dat; 
@@ -25,41 +27,13 @@ public class personaje{
     }
 }
 
-public enum Tipo{ 
-    Brujo, 
-    Hechicera, 
-    Princesa, 
-    Elfo,
-    Dragon,
-    Demonio,
-    Rey,
-
-}
-public enum Nombre{
-    GeraltDeRivia,
-    YenneferDeVenderberg,
-    CirillaDeCintra,
-    FilavandrelAénFidháil,
-    Villentretenmerth, 
-    VolethMeir,
-    Foltest,
-    Vesemir,
-}
-public enum Apodo{
-    Geralt,
-    Yennefer,
-    Ciri,
-    Filavandrel,
-    Borch, 
-    BabaYaga, 
-    Foltest,
-    Vesemir,
-}
+public enum Tipo{ Brujo, Hechicera, Princesa, Curandera, Soldado, Arquero, Incendiario, Hacker, Transformer, Cientifico, Vaquero}
 
 public class datos{
-    public Tipo Tipo;
-    public Nombre Nombre;
-    public Apodo Apodo;
+    [JsonConverter(typeof(JsonStringEnumConverter))] 
+    public Tipo Tipo {get;set;}
+    public string Nombre {get;set;}
+    public string Apodo {get;set;}
     public DateTime FechaNacimiento {get;set;}
     public int Edad {get;set;}
     public int Salud {get;set;}
@@ -80,50 +54,48 @@ public class datos{
         return start.AddDays(gen.Next(range)); 
     }
 
-    public datos(int tipo){
-        // Random random = new Random();
-        //int tipo = random.Next(1,5);
-        
+    public datos(int tipo, List<string> nombres, List<string> apodos){
+                
         switch (tipo){
+            case 0:
+                Tipo = Tipo.Hacker;
+                Nombre = nombres[tipo];
+                Apodo = apodos[tipo];
+                break;
             case 1:
-                Tipo = Tipo.Brujo;
-                Nombre = Nombre.GeraltDeRivia;
-                Apodo = Apodo.Geralt;
+                Tipo = Tipo.Soldado;
+                Nombre = nombres[tipo];
+                Apodo = apodos[tipo];
                 break;
             case 2:
-                Tipo = Tipo.Hechicera;
-                Nombre = Nombre.YenneferDeVenderberg;
-                Apodo = Apodo.Yennefer;
+                Tipo = Tipo.Princesa;
+                Nombre = nombres[tipo];
+                Apodo = apodos[tipo];
                 break;
             case 3:
-                Tipo = Tipo.Princesa;
-                Nombre = Nombre.CirillaDeCintra;
-                Apodo = Apodo.Ciri;
+                Tipo = Tipo.Cientifico;
+                Nombre = nombres[tipo];
+                Apodo = apodos[tipo];
                 break;
             case 4:
-                Tipo = Tipo.Elfo;
-                Nombre = Nombre.FilavandrelAénFidháil;
-                Apodo = Apodo.Filavandrel;
+                Tipo = Tipo.Transformer;
+                Nombre = nombres[tipo];
+                Apodo = apodos[tipo];
                 break;
             case 5:
-                Tipo = Tipo.Dragon;
-                Nombre = Nombre.Villentretenmerth;
-                Apodo = Apodo.Borch;
+                Tipo = Tipo.Soldado;
+                Nombre = nombres[tipo];
+                Apodo = apodos[tipo];
                 break;
             case 6:
-                Tipo = Tipo.Demonio;
-                Nombre = Nombre.VolethMeir;
-                Apodo = Apodo.BabaYaga;
+                Tipo = Tipo.Vaquero;
+                Nombre = nombres[tipo];
+                Apodo = apodos[tipo];
                 break;
             case 7:
-                Tipo = Tipo.Rey;
-                Nombre = Nombre.Foltest;
-                Apodo = Apodo.Foltest;
-                break;
-            case 8:
-                Tipo = Tipo.Brujo;
-                Nombre = Nombre.Vesemir;
-                Apodo = Apodo.Vesemir;
+                Tipo = Tipo.Arquero;
+               Nombre = nombres[tipo];
+                Apodo = apodos[tipo];
                 break;
             default:
                 break;
@@ -135,6 +107,8 @@ public class datos{
 
         Salud = 1000;
     }
+
+    public datos(){}
 }
 
 public class caracteristicas{
@@ -153,4 +127,6 @@ public class caracteristicas{
         Armadura = random.Next(1,10);
         Nivel = random.Next(1,10);
     }
+
 }
+

@@ -1,37 +1,78 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Text.Json;
+using System.Net;
+
+string ruta = @"C:\DIANA\Facultad\3er ANIO\1er Cuatrimestre\Taller de Lenguajes I\RPG\rpg-2022-dianapark411";
 List<personaje> PersonajesEnJuego = new List<personaje>();
+List<personaje> personajesGanadores = new List<personaje>();
+
+//para guardar los datos de la api
+Root agentes = new Root();
+List<string> nombres = new List<string>();
+List<string> apodos = new List<string>();
+
+int cantPersonajes = 8;
+//nueva variable, por las dudas para no modificar la original en caso de necesitarla desp
+int cantPersj = cantPersonajes;
 
 //QUIERO QUE SE CARGUEN EN LA LISTA TODOS LOS PERSONAJES
 //LA CANTIDAD DE PERSONAJES DEBE CORRESPONDER A POTENCIA DE 2, PARA QUE SE ARME UNA ESPECIE DE FIGSTURE DE LA PELEA
-//SI SE AUMENTAN PERSONAJES SE DEBE MODIFICAR LA CLASE DATOS, PORQUE CADA TIPO TIENE UN NOMBRE PREDETERMINADO
-int cantPersonajes = 8;
 
-Console.WriteLine("\n------PERSONAJES DISPONIBLES------");
-for (int i = 0; i < cantPersonajes; i++){
-
-    datos datos = new datos(i+1);
-    caracteristicas caracteristicas = new caracteristicas();
-    personaje player = new personaje(datos, caracteristicas);
-    PersonajesEnJuego.Insert(i, player);
-
-    Console.WriteLine($"\n----INFORMACION DEL PERSONAJE [{i}]----");
-    player.mostrarUnPersonaje(PersonajesEnJuego[i]);
-    
-}
-
-List<personaje> personajesGanadores = new List<personaje>();
 string[] personajesQueSeEnfrentan;
 List<string> parejas = new List<string>();
-
-//nueva variable, por las dudas para no modificar la original
-int cantPersj = cantPersonajes;
 
 int p1, p2, ganador, perdedor;
 int ronda = 1;
 Combate pelea;
 
+
+Console.WriteLine("\nBienvenido!!!");
+Console.WriteLine("\nDesea que los jugadores se generen aleatoriamente o se carguen desde un Json?");
+Console.WriteLine("\nIngrese 1 para la primera opcion y 0 para la segunda: ");
+int opc = 1;
+opc = Convert.ToInt32(Console.ReadLine());
+
+if(opc == 0){
+    //cargo desde el json
+    if(File.Exists(ruta + @"\jugadores.json")){
+        PersonajesEnJuego = leerJson(ruta + @"\jugadores.json", PersonajesEnJuego);
+    }else{
+        Console.WriteLine("\nNO EXISTE EL ARCHIVO JSON");
+        Console.WriteLine("\nCreando personajes de forma aleatoria");
+        opc = 1;
+    }
+}
+
+if(opc == 1){    
+    agentes = temaApi(agentes);
+    
+    foreach (var item in agentes.data)
+    {   
+        nombres.Add(item.developerName); //realemente el nombre de los personajes es el de abajo
+        apodos.Add(item.displayName);
+    }
+
+    for (int i = 0; i < cantPersonajes; i++){
+
+        datos datos = new datos(i, nombres, apodos);
+        caracteristicas caracteristicas = new caracteristicas();
+        personaje player = new personaje(datos, caracteristicas);
+        
+        PersonajesEnJuego.Insert(i, player);
+
+        guardarEnJson(ruta + @"\jugadores.json", PersonajesEnJuego);    
+    }
+}
+
+Console.WriteLine("\n------PERSONAJES DISPONIBLES------");
+foreach (var item in PersonajesEnJuego)
+{
+    Console.WriteLine($"\n");
+    item.mostrarUnPersonaje(item);
+}
+
+Console.WriteLine("\nQUE COMIENCE LA BATALLA!!!");
 //creo el archivo csv para agregarle desp los ganadores
-string ruta = @"C:\DIANA\Facultad\3er ANIO\1er Cuatrimestre\Taller de Lenguajes I\RPG\rpg-2022-dianapark411";
 crearCSV(ruta);
 
 //Hasta 2 personajes para hacer la final por separado
@@ -87,16 +128,17 @@ p2 = Convert.ToInt32(personajesQueSeEnfrentan[1]);
 escribirGanadoresCSV(ruta,personajesGanadores, ronda);
 personajesGanadores.Clear();
 
-Console.WriteLine("\n---¡¡¡¡¡GANADOR DEL TRONO!!!!!---");
+Console.WriteLine("\n¡¡¡¡¡GANADOR DEL TRONO!!!!!");
 PersonajesEnJuego[ganador].mostrarUnPersonaje(PersonajesEnJuego[ganador]);
 
-Console.WriteLine("\n---Desea recordar los ganadores en cada ronda?---");
-Console.WriteLine("\n---Ingrese 1 para si 0 para no---");
-int opcion = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("\nDesea recordar los ganadores en cada ronda?");
+int opcion = 0;
+Console.WriteLine("\nIngrese 1 para si 0 para no");
+opcion = Convert.ToInt32(Console.ReadLine());
+
 if(opcion == 1){
     leerGanadoresCSV(ruta);
 }
-
 
 
 //OTRAS FUNCIONES
@@ -200,4 +242,68 @@ void leerGanadoresCSV(string ruta){
         }
         file.Close();   
     }
+}
+
+
+void guardarEnJson(string ruta, List<personaje> PersonajesEnJuego){
+    if(!File.Exists(ruta)){
+        File.Create(ruta).Close();
+    }
+
+    //para que se vea mas bonito
+    var options = new JsonSerializerOptions { WriteIndented = true };
+
+    string jugadores = JsonSerializer.Serialize(PersonajesEnJuego, options);
+
+    using (StreamWriter writer = new StreamWriter(ruta))
+    {
+        writer.WriteLine(jugadores);
+    }
+}
+
+List<personaje> leerJson(string ruta, List<personaje> PersonajesEnJuego){
+    if(File.Exists(ruta)){
+
+        StreamReader reader = new StreamReader(ruta);
+        PersonajesEnJuego = JsonSerializer.Deserialize<List<personaje>>(reader.ReadLine());
+
+        reader.Close();
+    }
+
+    return PersonajesEnJuego;
+}
+
+
+Root temaApi(Root agentsValorant){
+
+    string url = $"https://valorant-api.com/v1/agents";
+    var request = (HttpWebRequest) WebRequest.Create(url);
+
+    request.Method = "GET";
+    request.Accept = "application/json";
+    request.ContentType = "application/json";
+
+    try
+    {
+        using (WebResponse respuesta = request.GetResponse())
+        {
+            using (Stream reader = respuesta.GetResponseStream())
+            {
+                if(reader != null){
+
+                    using (StreamReader objectReader = new StreamReader(reader))
+                    {
+                        string body = objectReader.ReadToEnd();
+                        agentsValorant = JsonSerializer.Deserialize<Root>(body);
+                    }
+                }
+            }
+        }
+    }
+    catch (WebException excepcion)
+    {
+        Console.WriteLine("Error al conectar a la API!!!");
+    }
+
+    return agentsValorant;
 }

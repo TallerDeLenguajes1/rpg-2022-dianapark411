@@ -66,7 +66,7 @@ public class Combate{
         }
 
         //UNA VEZ QUE YA SE ATACARON MUTUAMENTE COMPARO LA SALUD PARA VER EL GANADOR
-        if(p1.dat.Salud != 0  &&  p2.dat.Salud != 0 ){
+        if(p1.dat.Salud >= 0  &&  p2.dat.Salud >= 0){
             if(p1.dat.Salud > p2.dat.Salud){    //gana el primer personaje
                 mejora(p1);
                 return indiceP2; 
@@ -74,11 +74,11 @@ public class Combate{
                 mejora(p2);
                 return indiceP1; 
             }
-        }else{  //alguno o ambos tienen salud 0, pierde
+        }else{  //alguno o ambos tienen salud 0 o menor, pierde
             if(p1.dat.Salud == 0  &&  p2.dat.Salud == 0){   //hay un empate, se hace una batalla nuevamente
                 return combate(p1,p2, indiceP1, indiceP2);
             }else{
-                if(p1.dat.Salud == 0){  //gana el segundo
+                if(p1.dat.Salud <= 0){  //gana el segundo
                     mejora(p2);
                     return indiceP1; 
                 }else{ //gana el primero

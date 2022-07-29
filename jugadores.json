@@ -1,0 +1,138 @@
+[
+  {
+    "dat": {
+      "Tipo": "Hacker",
+      "Nombre": "BountyHunter",
+      "Apodo": "Fade",
+      "FechaNacimiento": "2016-05-13T00:00:00",
+      "Edad": 6,
+      "Salud": 1000
+    },
+    "carac": {
+      "Velocidad": 3,
+      "Destreza": 4,
+      "Fuerza": 8,
+      "Nivel": 2,
+      "Armadura": 4
+    }
+  },
+  {
+    "dat": {
+      "Tipo": "Soldado",
+      "Nombre": "Breach",
+      "Apodo": "Breach",
+      "FechaNacimiento": "1849-07-08T00:00:00",
+      "Edad": 173,
+      "Salud": 1000
+    },
+    "carac": {
+      "Velocidad": 1,
+      "Destreza": 4,
+      "Fuerza": 8,
+      "Nivel": 6,
+      "Armadura": 5
+    }
+  },
+  {
+    "dat": {
+      "Tipo": "Princesa",
+      "Nombre": "Clay",
+      "Apodo": "Raze",
+      "FechaNacimiento": "1924-02-16T00:00:00",
+      "Edad": 98,
+      "Salud": 1000
+    },
+    "carac": {
+      "Velocidad": 8,
+      "Destreza": 3,
+      "Fuerza": 1,
+      "Nivel": 9,
+      "Armadura": 1
+    }
+  },
+  {
+    "dat": {
+      "Tipo": "Cientifico",
+      "Nombre": "Deadeye",
+      "Apodo": "Chamber",
+      "FechaNacimiento": "1724-10-12T00:00:00",
+      "Edad": 297,
+      "Salud": 1000
+    },
+    "carac": {
+      "Velocidad": 3,
+      "Destreza": 2,
+      "Fuerza": 3,
+      "Nivel": 5,
+      "Armadura": 9
+    }
+  },
+  {
+    "dat": {
+      "Tipo": "Transformer",
+      "Nombre": "Grenadier",
+      "Apodo": "KAY/O",
+      "FechaNacimiento": "1898-12-16T00:00:00",
+      "Edad": 123,
+      "Salud": 1000
+    },
+    "carac": {
+      "Velocidad": 6,
+      "Destreza": 4,
+      "Fuerza": 4,
+      "Nivel": 8,
+      "Armadura": 5
+    }
+  },
+  {
+    "dat": {
+      "Tipo": "Soldado",
+      "Nombre": "Guide",
+      "Apodo": "Skye",
+      "FechaNacimiento": "1944-07-08T00:00:00",
+      "Edad": 78,
+      "Salud": 1000
+    },
+    "carac": {
+      "Velocidad": 7,
+      "Destreza": 3,
+      "Fuerza": 4,
+      "Nivel": 5,
+      "Armadura": 9
+    }
+  },
+  {
+    "dat": {
+      "Tipo": "Vaquero",
+      "Nombre": "Gumshoe",
+      "Apodo": "Cypher",
+      "FechaNacimiento": "1761-09-17T00:00:00",
+      "Edad": 260,
+      "Salud": 1000
+    },
+    "carac": {
+      "Velocidad": 9,
+      "Destreza": 4,
+      "Fuerza": 8,
+      "Nivel": 5,
+      "Armadura": 3
+    }
+  },
+  {
+    "dat": {
+      "Tipo": "Arquero",
+      "Nombre": "Hunter_NPE",
+      "Apodo": "Sova",
+      "FechaNacimiento": "1738-06-30T00:00:00",
+      "Edad": 284,
+      "Salud": 1000
+    },
+    "carac": {
+      "Velocidad": 2,
+      "Destreza": 3,
+      "Fuerza": 7,
+      "Nivel": 8,
+      "Armadura": 2
+    }
+  }
+]
