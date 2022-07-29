@@ -4,16 +4,16 @@
       "Tipo": "Hacker",
       "Nombre": "BountyHunter",
       "Apodo": "Fade",
-      "FechaNacimiento": "1807-01-03T00:00:00",
-      "Edad": 215,
+      "FechaNacimiento": "1879-07-24T00:00:00",
+      "Edad": 143,
       "Salud": 1000
     },
     "carac": {
-      "Velocidad": 4,
-      "Destreza": 1,
-      "Fuerza": 1,
-      "Nivel": 5,
-      "Armadura": 4
+      "Velocidad": 6,
+      "Destreza": 2,
+      "Fuerza": 7,
+      "Nivel": 4,
+      "Armadura": 9
     }
   },
   {
@@ -21,16 +21,16 @@
       "Tipo": "Soldado",
       "Nombre": "Breach",
       "Apodo": "Breach",
-      "FechaNacimiento": "1903-02-09T00:00:00",
-      "Edad": 119,
+      "FechaNacimiento": "1997-10-18T00:00:00",
+      "Edad": 24,
       "Salud": 1000
     },
     "carac": {
-      "Velocidad": 1,
-      "Destreza": 2,
-      "Fuerza": 1,
-      "Nivel": 6,
-      "Armadura": 1
+      "Velocidad": 7,
+      "Destreza": 4,
+      "Fuerza": 6,
+      "Nivel": 4,
+      "Armadura": 8
     }
   },
   {
@@ -38,16 +38,16 @@
       "Tipo": "Princesa",
       "Nombre": "Clay",
       "Apodo": "Raze",
-      "FechaNacimiento": "1872-03-28T00:00:00",
-      "Edad": 150,
+      "FechaNacimiento": "1972-05-22T00:00:00",
+      "Edad": 50,
       "Salud": 1000
     },
     "carac": {
-      "Velocidad": 9,
-      "Destreza": 2,
-      "Fuerza": 3,
+      "Velocidad": 5,
+      "Destreza": 1,
+      "Fuerza": 2,
       "Nivel": 7,
-      "Armadura": 8
+      "Armadura": 7
     }
   },
   {
@@ -55,16 +55,16 @@
       "Tipo": "Cientifico",
       "Nombre": "Deadeye",
       "Apodo": "Chamber",
-      "FechaNacimiento": "1984-01-11T00:00:00",
-      "Edad": 38,
+      "FechaNacimiento": "1768-08-11T00:00:00",
+      "Edad": 253,
       "Salud": 1000
     },
     "carac": {
-      "Velocidad": 4,
-      "Destreza": 4,
-      "Fuerza": 9,
-      "Nivel": 9,
-      "Armadura": 5
+      "Velocidad": 6,
+      "Destreza": 2,
+      "Fuerza": 6,
+      "Nivel": 5,
+      "Armadura": 4
     }
   },
   {
@@ -72,16 +72,16 @@
       "Tipo": "Transformer",
       "Nombre": "Grenadier",
       "Apodo": "KAY/O",
-      "FechaNacimiento": "1910-01-29T00:00:00",
-      "Edad": 112,
+      "FechaNacimiento": "1903-06-01T00:00:00",
+      "Edad": 119,
       "Salud": 1000
     },
     "carac": {
-      "Velocidad": 3,
+      "Velocidad": 4,
       "Destreza": 4,
-      "Fuerza": 9,
-      "Nivel": 9,
-      "Armadura": 6
+      "Fuerza": 4,
+      "Nivel": 2,
+      "Armadura": 7
     }
   },
   {
@@ -89,16 +89,16 @@
       "Tipo": "Soldado",
       "Nombre": "Guide",
       "Apodo": "Skye",
-      "FechaNacimiento": "1948-05-09T00:00:00",
-      "Edad": 74,
+      "FechaNacimiento": "1785-01-07T00:00:00",
+      "Edad": 237,
       "Salud": 1000
     },
     "carac": {
-      "Velocidad": 1,
-      "Destreza": 2,
-      "Fuerza": 2,
+      "Velocidad": 5,
+      "Destreza": 4,
+      "Fuerza": 4,
       "Nivel": 7,
-      "Armadura": 2
+      "Armadura": 4
     }
   },
   {
@@ -106,16 +106,16 @@
       "Tipo": "Vaquero",
       "Nombre": "Gumshoe",
       "Apodo": "Cypher",
-      "FechaNacimiento": "1786-09-15T00:00:00",
-      "Edad": 235,
+      "FechaNacimiento": "1798-04-11T00:00:00",
+      "Edad": 224,
       "Salud": 1000
     },
     "carac": {
-      "Velocidad": 3,
+      "Velocidad": 6,
       "Destreza": 4,
-      "Fuerza": 8,
-      "Nivel": 6,
-      "Armadura": 2
+      "Fuerza": 7,
+      "Nivel": 5,
+      "Armadura": 3
     }
   },
   {
@@ -123,16 +123,16 @@
       "Tipo": "Arquero",
       "Nombre": "Hunter_NPE",
       "Apodo": "Sova",
-      "FechaNacimiento": "1734-03-04T00:00:00",
-      "Edad": 288,
+      "FechaNacimiento": "1835-08-25T00:00:00",
+      "Edad": 186,
       "Salud": 1000
     },
     "carac": {
-      "Velocidad": 1,
+      "Velocidad": 6,
       "Destreza": 3,
-      "Fuerza": 6,
-      "Nivel": 4,
-      "Armadura": 7
+      "Fuerza": 7,
+      "Nivel": 5,
+      "Armadura": 8
     }
   }
 ]

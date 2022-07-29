@@ -71,7 +71,8 @@ foreach (var item in PersonajesEnJuego)
     item.mostrarUnPersonaje(item);
 }
 
-Console.WriteLine("\nQUE COMIENCE LA BATALLA!!!");
+Console.WriteLine("\n\nQUE COMIENCE LA BATALLA!!!");
+Console.WriteLine("Los perdedores seran eliminados!!!");
 //creo el archivo csv para agregarle desp los ganadores
 crearCSV(ruta);
 
@@ -90,12 +91,11 @@ while (cantPersj>2){
 
         (ganador,perdedor) = enfrentamiento(p1,p2);
 
-        Console.WriteLine("\n---GANADOR DE LA BATALLA---");
-        PersonajesEnJuego[ganador].mostrarUnPersonaje(PersonajesEnJuego[ganador]);
-
-        Console.WriteLine("\n---PERDEDOR DE LA BATALLA---");
-        Console.WriteLine("\n---no podra volver a jugar---");
-        PersonajesEnJuego[perdedor].mostrarUnPersonaje(PersonajesEnJuego[perdedor]);
+        Console.WriteLine($"GANADOR: {PersonajesEnJuego[ganador].dat.Apodo}");
+        //PersonajesEnJuego[ganador].mostrarUnPersonaje(PersonajesEnJuego[ganador]);
+        
+        Console.WriteLine($"PERDEDOR: {PersonajesEnJuego[perdedor].dat.Apodo}");
+        //PersonajesEnJuego[perdedor].mostrarUnPersonaje(PersonajesEnJuego[perdedor]);
 
     }
     //Elimino todos los personajes de la lista y agrego solamente los ganadores
@@ -115,7 +115,7 @@ while (cantPersj>2){
 
 }
 
-Console.WriteLine("\n¡¡¡¡¡LA GRAN FINAL!!!!!");
+Console.WriteLine("¡¡¡¡¡LA GRAN FINAL!!!!!");
 parejas = emparejamiento(cantPersj);
 
 //indice 0 porque solo quedan 2 personajes asi que sera un elemento de la lista
