@@ -35,7 +35,7 @@ opc = Convert.ToInt32(Console.ReadLine());
 if(opc == 0){
     //cargo desde el json
     if(File.Exists(ruta + @"\jugadores.json")){
-        PersonajesEnJuego = leerJson(ruta + @"\jugadores.json", PersonajesEnJuego);
+        PersonajesEnJuego = leerJson(ruta + @"\jugadores.json");
     }else{
         Console.WriteLine("\nNO EXISTE EL ARCHIVO JSON");
         Console.WriteLine("\nCreando personajes de forma aleatoria");
@@ -261,15 +261,10 @@ void guardarEnJson(string ruta, List<personaje> PersonajesEnJuego){
     }
 }
 
-List<personaje> leerJson(string ruta, List<personaje> PersonajesEnJuego){
+List<personaje> leerJson(string ruta){
     if(File.Exists(ruta)){
-
-        StreamReader reader = new StreamReader(ruta);
-        PersonajesEnJuego = JsonSerializer.Deserialize<List<personaje>>(reader.ReadLine());
-
-        reader.Close();
+        PersonajesEnJuego = JsonSerializer.Deserialize<List<personaje>>(File.ReadAllText(ruta));
     }
-
     return PersonajesEnJuego;
 }
 

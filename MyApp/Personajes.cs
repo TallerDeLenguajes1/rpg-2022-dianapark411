@@ -3,10 +3,12 @@ using System.Text.Json.Serialization;
 public class personaje{
     public datos dat {get;set;}
     public caracteristicas carac {get;set;}
-
+    
     public personaje(datos _dat, caracteristicas _carac){
         dat = _dat; 
         carac = _carac;
+    }
+    public personaje(){
     }
 
     public void mostrarUnPersonaje(personaje _personaje){
@@ -30,7 +32,7 @@ public class personaje{
 public enum Tipo{ Brujo, Hechicera, Princesa, Curandera, Soldado, Arquero, Incendiario, Hacker, Transformer, Cientifico, Vaquero}
 
 public class datos{
-    [JsonConverter(typeof(JsonStringEnumConverter))] 
+    [JsonConverter(typeof(JsonStringEnumConverter))] //sino se pone el entero que le corresponde al string
     public Tipo Tipo {get;set;}
     public string Nombre {get;set;}
     public string Apodo {get;set;}
